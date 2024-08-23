@@ -1,9 +1,17 @@
-import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import { getToken } from "./helpers";
 import Footer from "./components/Footer/Footer";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./pages/Home/Home";
 import Product from "./pages/Product/Product";
 import Products from "./pages/Products/Products";
+import SignIn from "./pages/SignIn/SignIn";
+import SignUp from "./pages/Signup/SignUp";
 import "./app.scss";
 
 const Layout = () => {
@@ -23,20 +31,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: getToken() ? <Home /> : <Navigate to='/signin' />,
       },
       {
         path: "/products/:id",
-        element: <Products />,
+        element: getToken() ? <Products /> : <Navigate to='/signin' />,
       },
       {
         path: "/product/:id",
-        element: <Product />,
+        element: getToken() ? <Product /> : <Navigate to='/signin' />,
       },
+      { path: "/signin", element: <SignIn /> },
+      { path: "/signup", element: <SignUp /> },
     ],
   },
 ]);
-
+console.log(getToken() ? "true" : "false");
 function App() {
   return (
     <div>

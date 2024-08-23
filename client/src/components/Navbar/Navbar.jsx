@@ -1,10 +1,10 @@
 import { useState } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
-import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import { Link } from "react-router-dom";
+import Auth from "../Auth/Auth";
 import "./Navbar.scss"
 import Cart from "../Cart/Cart";
 import { useSelector } from "react-redux";
@@ -52,8 +52,8 @@ const Navbar = () => {
             <Link className ="link" to="/">Stores</Link>
           </div>
           <div className="icons">
-            <SearchIcon/>
-            <PersonOutlineOutlinedIcon/>
+            <SearchIcon/>            
+            <Auth/>
             <FavoriteBorderOutlinedIcon/>
             <div className="cartIcon" onClick={()=>setOpen(!open)}>
               <ShoppingCartOutlinedIcon/>
